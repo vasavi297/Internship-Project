@@ -1,26 +1,21 @@
-﻿# Core Data Processing
-pandas>=2.0.0
-numpy>=1.24.0
-
-# Machine Learning
-scikit-learn>=1.3.0
-torch>=2.0.0
-
-# NLP & Transformers
-transformers>=4.30.0
-datasets>=2.14.0
-sentence-transformers>=2.2.0
-seqeval>=1.2.2
-
-# Web Framework & API
-fastapi>=0.100.0
-uvicorn>=0.23.0
-python-multipart>=0.0.6
-
-# Utilities
-tqdm>=4.65.0
-jupyter>=1.0.0
-
-# Optional but recommended
-matplotlib>=3.7.0
-seaborn>=0.12.0
+﻿# PROJECT CONVERTED TO JAVA
+# This project has been migrated from Python to Java.
+# Use pom.xml for dependency management instead.
+#
+# Python to Java Mapping:
+#
+# PYTHON (OLD)              | JAVA (NEW)
+# ============================================
+# pandas, numpy             | Tablesaw, Apache Commons Math, ND4J
+# scikit-learn, torch       | Deeplearning4j, Weka, Spark MLlib
+# transformers, datasets    | OpenNLP, Stanford CoreNLP, Deeplearning4j
+# sentence-transformers     | Deeplearning4j NLP, Hugging Face Java API
+# seqeval                   | Custom implementation or Deeplearning4j
+# fastapi, uvicorn          | Spring Boot, Spring Web
+# python-multipart          | Spring Web (built-in)
+# tqdm, jupyter             | Logback, Slf4j
+# matplotlib, seaborn       | JFreeChart, XChart
+#
+# INSTALL MAVEN DEPENDENCIES:
+# Run: mvn clean install
+# Or use: mvn dependency:resolve
