@@ -1,21 +1,111 @@
-﻿# PROJECT CONVERTED TO JAVA
-# This project has been migrated from Python to Java.
-# Use pom.xml for dependency management instead.
-#
-# Python to Java Mapping:
-#
-# PYTHON (OLD)              | JAVA (NEW)
-# ============================================
-# pandas, numpy             | Tablesaw, Apache Commons Math, ND4J
-# scikit-learn, torch       | Deeplearning4j, Weka, Spark MLlib
-# transformers, datasets    | OpenNLP, Stanford CoreNLP, Deeplearning4j
-# sentence-transformers     | Deeplearning4j NLP, Hugging Face Java API
-# seqeval                   | Custom implementation or Deeplearning4j
-# fastapi, uvicorn          | Spring Boot, Spring Web
-# python-multipart          | Spring Web (built-in)
-# tqdm, jupyter             | Logback, Slf4j
-# matplotlib, seaborn       | JFreeChart, XChart
-#
-# INSTALL MAVEN DEPENDENCIES:
-# Run: mvn clean install
-# Or use: mvn dependency:resolve
+﻿====================================================================
+           CAREER PATH AI - JAVA + AWS SETUP REQUIREMENTS
+====================================================================
+
+This file contains:
+- Prerequisites (software you need)
+- Commands to install dependencies and run the project
+- A list of all required libraries (with versions)
+
+====================================================================
+                   1. PREREQUISITES
+====================================================================
+
+- Java 11 (OpenJDK or Oracle JDK)
+- VS Code with these extensions:
+    * Extension Pack for Java (by Microsoft)
+    * (Optional) Maven for Java
+- Internet connection (dependencies total ~200 MB)
+
+====================================================================
+                   2. COMMANDS TO RUN
+====================================================================
+
+Open a terminal in VS Code (Ctrl+`) and run one of these:
+
+A) If Maven is installed globally:
+    mvn clean install
+    mvn dependency:resolve      (to only download dependencies)
+    mvn spring-boot:run         (to start the application)
+
+B) Using the Maven Wrapper (included in project):
+    Windows:   mvnw.cmd clean install
+    macOS/Linux: ./mvnw clean install
+    (Replace "clean install" with "dependency:resolve" or "spring-boot:run")
+
+C) Via VS Code Command Palette:
+    Ctrl+Shift+P → "Maven: Execute Commands" → choose "mvn install"
+
+If dependencies don't load:
+    Ctrl+Shift+P → "Java: Clean Java Language Server Workspace" → Reload VS Code
+
+====================================================================
+                   3. DEPENDENCY LIST (all libraries)
+====================================================================
+
+Spring Boot:
+  - spring-boot-starter-web        (REST APIs)
+  - spring-boot-starter-security   (security, JWT)
+  - spring-boot-starter-validation (input validation)
+
+AWS SDK v2:
+  - s3                             (file storage)
+  - dynamodb                       (NoSQL database)
+  - cognitoidentityprovider        (user authentication)
+  - apigateway                     (API Gateway client)
+  - sns                            (notifications)
+
+JWT:
+  - jjwt-api, jjwt-impl, jjwt-jackson (JSON Web Tokens)
+
+NLP & AI (Java):
+  - stanford-corenlp 4.5.1         (NER, POS tagging)
+  - opennlp-tools 2.3.2            (alternative NER)
+  - deeplearning4j-core 1.0.0-M2.1 (deep learning / BERT)
+  - nd4j-native-platform 1.0.0-M2.1 (numpy-like tensors)
+  - deeplearning4j-nlp 1.0.0-M2.1  (NLP tools)
+  - djl-api & model-zoo 0.27.0     (Hugging Face model loading)
+
+Data Processing:
+  - tablesaw-core 0.43.0           (dataframes, like pandas)
+  - commons-math3 3.6.1            (mathematical operations)
+
+File Parsing:
+  - pdfbox 3.0.1                   (read PDF resumes)
+  - poi-ooxml 5.2.5                (read DOCX resumes)
+
+Utilities:
+  - lombok 1.18.30                 (reduce boilerplate)
+
+Testing:
+  - spring-boot-starter-test       (unit & integration tests)
+
+====================================================================
+                    4. FOLDER STRUCTURE SUGGESTION
+====================================================================
+
+project-root/
+├── pom.xml                 (paste the separate pom.xml content)
+├── mvnw / mvnw.cmd         (Maven wrapper - optional)
+├── src/
+│   ├── main/
+│   │   ├── java/com/careerpathai/
+│   │   │   ├── CareerPathAiApplication.java
+│   │   │   ├── controller/
+│   │   │   ├── service/
+│   │   │   ├── repository/
+│   │   │   └── config/
+│   │   └── resources/
+│   │       ├── application.properties
+│   │       └── static/
+│   └── test/
+├── models/                 (place your BERT/CoreNLP models here)
+├── data/                   (place ESCO, TalentCLEF datasets here)
+└── requirements.txt        (this file)
+
+====================================================================
+All AI models run locally inside your Java application on EC2.
+No SageMaker required.
+
+Ready to build! 🚀
+====================================================================
