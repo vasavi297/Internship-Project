@@ -11,7 +11,7 @@ This file contains:
                    1. PREREQUISITES
 ====================================================================
 
-- Java 11 (OpenJDK or Oracle JDK)
+- Java 21 (OpenJDK or Oracle JDK)
 - VS Code with these extensions:
     * Extension Pack for Java (by Microsoft)
     * (Optional) Maven for Java
