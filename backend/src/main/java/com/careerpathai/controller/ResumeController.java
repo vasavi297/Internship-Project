@@ -60,22 +60,22 @@ public class ResumeController {
     public ResumeMetadata getResumeById(
         @PathVariable String resumeId) {
 
-    return dynamoDbService.getResumeById(resumeId);
+        return dynamoDbService.getResumeById(resumeId);
 
     }  
     @DeleteMapping("/{resumeId}")
     public ApiResponse<String> deleteResume(
         @PathVariable String resumeId) {
 
-    ResumeMetadata resume =
-            dynamoDbService.getResumeById(resumeId);
+        ResumeMetadata resume =
+                dynamoDbService.getResumeById(resumeId);
 
-    if (resume == null) {
+        if (resume == null) {
 
-        return new ApiResponse<>(
-                false,
-                "Resume Not Found",
-                null
+            return new ApiResponse<>(
+                    false,
+                    "Resume Not Found",
+                    null
         );
     }
 

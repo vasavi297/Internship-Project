@@ -49,15 +49,43 @@ public class DynamoDbService {
     }
     public List<ResumeMetadata> getAllResumes() {
 
-    ScanRequest request = ScanRequest.builder()
-            .tableName(tableName)
-            .build();
+        ScanRequest request = ScanRequest.builder().tableName(tableName).build();
 
-    ScanResponse response = dynamoDbClient.scan(request);
+        ScanResponse response = dynamoDbClient.scan(request);
 
-    List<ResumeMetadata> resumes = new ArrayList<>();
+        List<ResumeMetadata> resumes = new ArrayList<>();
 
-    for (Map<String, AttributeValue> item : response.items()) {
+        for (Map<String, AttributeValue> item : response.items()) {
+
+            ResumeMetadata resume = new ResumeMetadata();
+
+            resume.setResumeId(item.get("resumeId").s());
+            resume.setFileName(item.get("fileName").s());
+            resume.setS3Key(item.get("s3Key").s());
+            resume.setStatus(item.get("status").s());
+            resume.setFileSize(Long.parseLong(item.get("fileSize").n()));
+            resume.setUploadTime(LocalDateTime.parse(item.get("uploadTime").s()));
+
+            resumes.add(resume);
+        }
+
+        return resumes;
+    }
+    public ResumeMetadata getResumeById(String resumeId) {
+
+        Map<String, AttributeValue> key = new HashMap<>();
+
+        key.put("resumeId", AttributeValue.builder().s(resumeId).build());
+
+        GetItemRequest request = GetItemRequest.builder().tableName(tableName).key(key).build();
+
+        GetItemResponse response = dynamoDbClient.getItem(request);
+
+        if (!response.hasItem()) {
+            return null;
+        }
+
+        Map<String, AttributeValue> item = response.item();
 
         ResumeMetadata resume = new ResumeMetadata();
 
@@ -66,57 +94,19 @@ public class DynamoDbService {
         resume.setS3Key(item.get("s3Key").s());
         resume.setStatus(item.get("status").s());
         resume.setFileSize(Long.parseLong(item.get("fileSize").n()));
-        resume.setUploadTime(LocalDateTime.parse(item.get("uploadTime").s()));
+        resume.setUploadTime(java.time.LocalDateTime.parse(item.get("uploadTime").s()));
 
-        resumes.add(resume);
+        return resume;
     }
+    public void deleteResume(String resumeId) {
 
-    return resumes;
-    }
-    public ResumeMetadata getResumeById(String resumeId) {
+        Map<String, AttributeValue> key = new HashMap<>();
 
-    Map<String, AttributeValue> key = new HashMap<>();
+        key.put("resumeId",AttributeValue.builder().s(resumeId).build());
 
-    key.put("resumeId", AttributeValue.builder().s(resumeId).build());
+        DeleteItemRequest request = DeleteItemRequest.builder().tableName(tableName).key(key).build();
 
-    GetItemRequest request = GetItemRequest.builder()
-            .tableName(tableName)
-            .key(key)
-            .build();
-
-    GetItemResponse response = dynamoDbClient.getItem(request);
-
-    if (!response.hasItem()) {
-        return null;
-    }
-
-    Map<String, AttributeValue> item = response.item();
-
-    ResumeMetadata resume = new ResumeMetadata();
-
-    resume.setResumeId(item.get("resumeId").s());
-    resume.setFileName(item.get("fileName").s());
-    resume.setS3Key(item.get("s3Key").s());
-    resume.setStatus(item.get("status").s());
-    resume.setFileSize(Long.parseLong(item.get("fileSize").n()));
-    resume.setUploadTime(java.time.LocalDateTime.parse(item.get("uploadTime").s()));
-
-    return resume;
-    }
-    public void deleteResume(String resumeId) 
-    {
-
-    Map<String, AttributeValue> key = new HashMap<>();
-
-    key.put("resumeId",
-            AttributeValue.builder().s(resumeId).build());
-
-    DeleteItemRequest request = DeleteItemRequest.builder()
-            .tableName(tableName)
-            .key(key)
-            .build();
-
-    dynamoDbClient.deleteItem(request);
+        dynamoDbClient.deleteItem(request);
 
     }
 
