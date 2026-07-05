@@ -9,6 +9,8 @@ import com.careerpathai.parser.ResumeParserService;
 import com.careerpathai.roadmap.model.LearningRoadmap;
 import com.careerpathai.roadmap.service.LearningRoadmapService;
 import org.springframework.stereotype.Service;
+import com.careerpathai.score.model.ResumeScore;
+import com.careerpathai.score.service.ResumeScoreService;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,23 +23,27 @@ public class ResumeAnalysisService {
     private final CareerRecommendationService recommendationService;
     private final SkillGapService skillGapService;
     private final LearningRoadmapService roadmapService;
+    private final ResumeScoreService resumeScoreService;
 
     public ResumeAnalysisService(
             ResumeParserService parserService,
             CareerRecommendationService recommendationService,
             SkillGapService skillGapService,
-            LearningRoadmapService roadmapService) {
+            LearningRoadmapService roadmapService,
+            ResumeScoreService resumeScoreService) {
 
         this.parserService = parserService;
         this.recommendationService = recommendationService;
         this.skillGapService = skillGapService;
         this.roadmapService = roadmapService;
+        this.resumeScoreService = resumeScoreService;
     }
 
     public ResumeAnalysisResponse analyze(File file) throws IOException {
 
         // Step 1: Parse Resume
         ParsedResume parsedResume = parserService.parseResume(file);
+        ResumeScore resumeScore = resumeScoreService.calculateScore(parsedResume);
 
         List<String> skills = parsedResume.getSkills();
 
@@ -71,9 +77,11 @@ public class ResumeAnalysisService {
                 new ResumeAnalysisResponse();
 
         response.setParsedResume(parsedResume);
+        response.setResumeScore(resumeScore);
         response.setRecommendedCareer(bestCareer);
         response.setTopMissingSkills(gap.getMissingSkills());
         response.setRoadmap(roadmap);
+        response.setCareerRecommendations(careers);
 
         return response;
     }
