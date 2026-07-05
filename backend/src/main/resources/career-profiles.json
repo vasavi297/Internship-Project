@@ -1,0 +1,316 @@
+{
+  "backend developer": {
+    "requiredSkills": [
+      "Java",
+      "Spring Boot",
+      "REST API",
+      "MySQL",
+      "Git"
+    ],
+    "importantSkills": [
+      "Docker",
+      "AWS",
+      "Redis",
+      "Kafka",
+      "JUnit",
+      "Microservices",
+      "Maven"
+    ],
+    "interviewTopics": [
+      "Java Collections",
+      "Spring Boot",
+      "REST APIs",
+      "JPA & Hibernate",
+      "SQL",
+      "Microservices"
+    ],
+    "salaryRange": "₹6-12 LPA",
+    "difficulty": "Intermediate",
+    "learningDuration": "4-6 Months"
+  },
+
+  "java developer": {
+    "requiredSkills": [
+      "Java",
+      "OOP",
+      "Collections",
+      "Exception Handling",
+      "Multithreading"
+    ],
+    "importantSkills": [
+      "Spring Boot",
+      "Hibernate",
+      "JPA",
+      "Maven",
+      "JUnit",
+      "Git"
+    ],
+    "interviewTopics": [
+      "Collections",
+      "Streams",
+      "JVM",
+      "Multithreading",
+      "OOP"
+    ],
+    "salaryRange": "₹5-10 LPA",
+    "difficulty": "Beginner",
+    "learningDuration": "3-5 Months"
+  },
+
+  "full stack developer": {
+    "requiredSkills": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React",
+      "Java",
+      "Spring Boot"
+    ],
+    "importantSkills": [
+      "MySQL",
+      "Docker",
+      "Git",
+      "AWS",
+      "REST API",
+      "Tailwind CSS"
+    ],
+    "interviewTopics": [
+      "React",
+      "Spring Boot",
+      "JavaScript",
+      "REST API",
+      "HTML",
+      "CSS"
+    ],
+    "salaryRange": "₹6-14 LPA",
+    "difficulty": "Intermediate",
+    "learningDuration": "5-7 Months"
+  },
+
+  "frontend developer": {
+    "requiredSkills": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React",
+      "Git"
+    ],
+    "importantSkills": [
+      "TypeScript",
+      "Redux",
+      "Next.js",
+      "Bootstrap",
+      "Tailwind CSS",
+      "REST API"
+    ],
+    "interviewTopics": [
+      "JavaScript",
+      "React",
+      "CSS",
+      "DOM",
+      "ES6",
+      "Responsive Design"
+    ],
+    "salaryRange": "₹5-10 LPA",
+    "difficulty": "Beginner",
+    "learningDuration": "3-5 Months"
+  },
+
+  "ai engineer": {
+    "requiredSkills": [
+      "Python",
+      "Machine Learning",
+      "NumPy",
+      "Pandas",
+      "Scikit-learn"
+    ],
+    "importantSkills": [
+      "TensorFlow",
+      "PyTorch",
+      "OpenCV",
+      "NLP",
+      "SQL",
+      "Deep Learning"
+    ],
+    "interviewTopics": [
+      "Machine Learning",
+      "Neural Networks",
+      "Deep Learning",
+      "Regression",
+      "Classification",
+      "Feature Engineering"
+    ],
+    "salaryRange": "₹8-18 LPA",
+    "difficulty": "Advanced",
+    "learningDuration": "6-9 Months"
+  },
+
+  "machine learning engineer": {
+    "requiredSkills": [
+      "Python",
+      "Machine Learning",
+      "NumPy",
+      "Pandas",
+      "Scikit-learn"
+    ],
+    "importantSkills": [
+      "TensorFlow",
+      "PyTorch",
+      "SQL",
+      "Docker",
+      "Statistics",
+      "Deep Learning"
+    ],
+    "interviewTopics": [
+      "Regression",
+      "Classification",
+      "Decision Trees",
+      "Random Forest",
+      "CNN",
+      "Model Evaluation"
+    ],
+    "salaryRange": "₹8-16 LPA",
+    "difficulty": "Advanced",
+    "learningDuration": "6-8 Months"
+  },
+
+  "data scientist": {
+    "requiredSkills": [
+      "Python",
+      "Pandas",
+      "NumPy",
+      "Statistics",
+      "SQL"
+    ],
+    "importantSkills": [
+      "Machine Learning",
+      "Power BI",
+      "TensorFlow",
+      "Matplotlib",
+      "Scikit-learn"
+    ],
+    "interviewTopics": [
+      "Statistics",
+      "Data Cleaning",
+      "Regression",
+      "Classification",
+      "EDA",
+      "Feature Engineering"
+    ],
+    "salaryRange": "₹7-15 LPA",
+    "difficulty": "Intermediate",
+    "learningDuration": "5-7 Months"
+  },
+
+  "devops engineer": {
+    "requiredSkills": [
+      "Linux",
+      "Git",
+      "Docker",
+      "AWS",
+      "CI/CD"
+    ],
+    "importantSkills": [
+      "Kubernetes",
+      "Terraform",
+      "Jenkins",
+      "Shell Scripting",
+      "Monitoring",
+      "GitHub Actions"
+    ],
+    "interviewTopics": [
+      "Docker",
+      "Kubernetes",
+      "Linux",
+      "AWS",
+      "CI/CD",
+      "Terraform"
+    ],
+    "salaryRange": "₹8-16 LPA",
+    "difficulty": "Intermediate",
+    "learningDuration": "5-8 Months"
+  },
+
+  "cloud engineer": {
+    "requiredSkills": [
+      "AWS",
+      "Linux",
+      "Networking",
+      "Git",
+      "Docker"
+    ],
+    "importantSkills": [
+      "Terraform",
+      "Kubernetes",
+      "Python",
+      "Cloud Security",
+      "Monitoring"
+    ],
+    "interviewTopics": [
+      "EC2",
+      "S3",
+      "IAM",
+      "VPC",
+      "Cloud Security",
+      "Load Balancer"
+    ],
+    "salaryRange": "₹8-15 LPA",
+    "difficulty": "Intermediate",
+    "learningDuration": "5-7 Months"
+  },
+
+  "android developer": {
+    "requiredSkills": [
+      "Java",
+      "Kotlin",
+      "Android Studio",
+      "XML",
+      "Git"
+    ],
+    "importantSkills": [
+      "Firebase",
+      "REST API",
+      "MVVM",
+      "SQLite",
+      "Jetpack Compose"
+    ],
+    "interviewTopics": [
+      "Activities",
+      "Fragments",
+      "RecyclerView",
+      "MVVM",
+      "Firebase",
+      "Lifecycle"
+    ],
+    "salaryRange": "₹5-11 LPA",
+    "difficulty": "Intermediate",
+    "learningDuration": "4-6 Months"
+  },
+
+  "qa engineer": {
+    "requiredSkills": [
+      "Manual Testing",
+      "Java",
+      "SQL",
+      "Selenium",
+      "Git"
+    ],
+    "importantSkills": [
+      "JUnit",
+      "TestNG",
+      "Postman",
+      "REST API",
+      "JMeter"
+    ],
+    "interviewTopics": [
+      "Manual Testing",
+      "Automation Testing",
+      "Selenium",
+      "API Testing",
+      "SQL"
+    ],
+    "salaryRange": "₹4-9 LPA",
+    "difficulty": "Beginner",
+    "learningDuration": "3-4 Months"
+  }
+}

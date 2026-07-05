@@ -65,21 +65,20 @@ public class ParsedResume {
     public void setExperience(List<String> experience) {
         this.experience = experience;
     }
-
     public List<String> getProjects() {
-        return projects;
+    return projects;
     }
 
     public void setProjects(List<String> projects) {
-        this.projects = projects;
+    this.projects = projects;
     }
 
     public List<String> getCertifications() {
-        return certifications;
+    return certifications;
     }
 
     public void setCertifications(List<String> certifications) {
-        this.certifications = certifications;
+    this.certifications = certifications;
     }
 
     public String getResumeText() {
