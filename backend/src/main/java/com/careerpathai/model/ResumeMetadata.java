@@ -6,15 +6,34 @@ import java.util.UUID;
 public class ResumeMetadata {
 
     private String resumeId;
+
     private String fileName;
+
     private String s3Key;
+
     private Long fileSize;
+
     private String status;
+
     private LocalDateTime uploadTime;
 
+    // Analysis Details
+
+    private String candidateName;
+
+    private String email;
+
+    private String recommendedCareer;
+
+    private Integer resumeScore;
+    private LocalDateTime analyzedTime;
+    private String analysisSummary;
+
     public ResumeMetadata() {
+
         this.resumeId = UUID.randomUUID().toString();
         this.uploadTime = LocalDateTime.now();
+
     }
 
     public String getResumeId() {
@@ -63,5 +82,37 @@ public class ResumeMetadata {
 
     public void setUploadTime(LocalDateTime uploadTime) {
         this.uploadTime = uploadTime;
+    }
+
+    public String getCandidateName() {
+        return candidateName;
+    }
+
+    public void setCandidateName(String candidateName) {
+        this.candidateName = candidateName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getRecommendedCareer() {
+        return recommendedCareer;
+    }
+
+    public void setRecommendedCareer(String recommendedCareer) {
+        this.recommendedCareer = recommendedCareer;
+    }
+
+    public Integer getResumeScore() {
+        return resumeScore;
+    }
+
+    public void setResumeScore(Integer resumeScore) {
+        this.resumeScore = resumeScore;
     }
 }

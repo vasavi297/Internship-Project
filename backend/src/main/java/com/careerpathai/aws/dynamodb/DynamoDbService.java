@@ -5,17 +5,18 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
+import software.amazon.awssdk.services.dynamodb.model.DeleteItemRequest;
+import software.amazon.awssdk.services.dynamodb.model.GetItemRequest;
+import software.amazon.awssdk.services.dynamodb.model.GetItemResponse;
 import software.amazon.awssdk.services.dynamodb.model.PutItemRequest;
 import software.amazon.awssdk.services.dynamodb.model.ScanRequest;
 import software.amazon.awssdk.services.dynamodb.model.ScanResponse;
-import software.amazon.awssdk.services.dynamodb.model.GetItemRequest;
-import software.amazon.awssdk.services.dynamodb.model.GetItemResponse;
-import software.amazon.awssdk.services.dynamodb.model.DeleteItemRequest;
-import java.util.List;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.ArrayList;
+
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class DynamoDbService {
@@ -33,12 +34,57 @@ public class DynamoDbService {
 
         Map<String, AttributeValue> item = new HashMap<>();
 
-        item.put("resumeId", AttributeValue.builder().s(resume.getResumeId()).build());
-        item.put("fileName", AttributeValue.builder().s(resume.getFileName()).build());
-        item.put("s3Key", AttributeValue.builder().s(resume.getS3Key()).build());
-        item.put("status", AttributeValue.builder().s(resume.getStatus()).build());
-        item.put("fileSize", AttributeValue.builder().n(String.valueOf(resume.getFileSize())).build());
-        item.put("uploadTime", AttributeValue.builder().s(resume.getUploadTime().toString()).build());
+        item.put("resumeId",
+                AttributeValue.builder().s(resume.getResumeId()).build());
+
+        item.put("fileName",
+                AttributeValue.builder().s(resume.getFileName()).build());
+
+        item.put("s3Key",
+                AttributeValue.builder().s(resume.getS3Key()).build());
+
+        item.put("status",
+                AttributeValue.builder().s(resume.getStatus()).build());
+
+        item.put("fileSize",
+                AttributeValue.builder()
+                        .n(String.valueOf(resume.getFileSize()))
+                        .build());
+
+        item.put("uploadTime",
+                AttributeValue.builder()
+                        .s(resume.getUploadTime().toString())
+                        .build());
+
+        // Analysis Details
+
+        if (resume.getCandidateName() != null) {
+            item.put("candidateName",
+                    AttributeValue.builder()
+                            .s(resume.getCandidateName())
+                            .build());
+        }
+
+        if (resume.getEmail() != null) {
+            item.put("email",
+                    AttributeValue.builder()
+                            .s(resume.getEmail())
+                            .build());
+        }
+
+        if (resume.getRecommendedCareer() != null) {
+            item.put("recommendedCareer",
+                    AttributeValue.builder()
+                            .s(resume.getRecommendedCareer())
+                            .build());
+        }
+
+        if (resume.getResumeScore() != null) {
+            item.put("resumeScore",
+                    AttributeValue.builder()
+                            .n(String.valueOf(resume.getResumeScore()))
+                            .build());
+        }
 
         PutItemRequest request = PutItemRequest.builder()
                 .tableName(tableName)
@@ -47,9 +93,12 @@ public class DynamoDbService {
 
         dynamoDbClient.putItem(request);
     }
+
     public List<ResumeMetadata> getAllResumes() {
 
-        ScanRequest request = ScanRequest.builder().tableName(tableName).build();
+        ScanRequest request = ScanRequest.builder()
+                .tableName(tableName)
+                .build();
 
         ScanResponse response = dynamoDbClient.scan(request);
 
@@ -64,20 +113,44 @@ public class DynamoDbService {
             resume.setS3Key(item.get("s3Key").s());
             resume.setStatus(item.get("status").s());
             resume.setFileSize(Long.parseLong(item.get("fileSize").n()));
-            resume.setUploadTime(LocalDateTime.parse(item.get("uploadTime").s()));
+            resume.setUploadTime(
+                    LocalDateTime.parse(item.get("uploadTime").s()));
+
+            if (item.containsKey("candidateName")) {
+                resume.setCandidateName(item.get("candidateName").s());
+            }
+
+            if (item.containsKey("email")) {
+                resume.setEmail(item.get("email").s());
+            }
+
+            if (item.containsKey("recommendedCareer")) {
+                resume.setRecommendedCareer(
+                        item.get("recommendedCareer").s());
+            }
+
+            if (item.containsKey("resumeScore")) {
+                resume.setResumeScore(
+                        Integer.parseInt(item.get("resumeScore").n()));
+            }
 
             resumes.add(resume);
         }
 
         return resumes;
     }
+
     public ResumeMetadata getResumeById(String resumeId) {
 
         Map<String, AttributeValue> key = new HashMap<>();
 
-        key.put("resumeId", AttributeValue.builder().s(resumeId).build());
+        key.put("resumeId",
+                AttributeValue.builder().s(resumeId).build());
 
-        GetItemRequest request = GetItemRequest.builder().tableName(tableName).key(key).build();
+        GetItemRequest request = GetItemRequest.builder()
+                .tableName(tableName)
+                .key(key)
+                .build();
 
         GetItemResponse response = dynamoDbClient.getItem(request);
 
@@ -94,20 +167,42 @@ public class DynamoDbService {
         resume.setS3Key(item.get("s3Key").s());
         resume.setStatus(item.get("status").s());
         resume.setFileSize(Long.parseLong(item.get("fileSize").n()));
-        resume.setUploadTime(java.time.LocalDateTime.parse(item.get("uploadTime").s()));
+        resume.setUploadTime(
+                LocalDateTime.parse(item.get("uploadTime").s()));
+
+        if (item.containsKey("candidateName")) {
+            resume.setCandidateName(item.get("candidateName").s());
+        }
+
+        if (item.containsKey("email")) {
+            resume.setEmail(item.get("email").s());
+        }
+
+        if (item.containsKey("recommendedCareer")) {
+            resume.setRecommendedCareer(
+                    item.get("recommendedCareer").s());
+        }
+
+        if (item.containsKey("resumeScore")) {
+            resume.setResumeScore(
+                    Integer.parseInt(item.get("resumeScore").n()));
+        }
 
         return resume;
     }
+
     public void deleteResume(String resumeId) {
 
         Map<String, AttributeValue> key = new HashMap<>();
 
-        key.put("resumeId",AttributeValue.builder().s(resumeId).build());
+        key.put("resumeId",
+                AttributeValue.builder().s(resumeId).build());
 
-        DeleteItemRequest request = DeleteItemRequest.builder().tableName(tableName).key(key).build();
+        DeleteItemRequest request = DeleteItemRequest.builder()
+                .tableName(tableName)
+                .key(key)
+                .build();
 
         dynamoDbClient.deleteItem(request);
-
     }
-
 }
