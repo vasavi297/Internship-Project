@@ -6,6 +6,8 @@ import com.careerpathai.auth.LoginRequest;
 import com.careerpathai.auth.RegisterRequest;
 import com.careerpathai.response.ApiResponse;
 import org.springframework.web.bind.annotation.*;
+import com.careerpathai.auth.ForgotPasswordRequest;
+import com.careerpathai.auth.ResetPasswordRequest;
 
 @RestController
 @RequestMapping("/auth")
@@ -51,4 +53,33 @@ public class AuthController {
                 null
         );
     }
+  @PostMapping("/forgot-password")
+public ApiResponse<String> forgotPassword(
+        @RequestBody ForgotPasswordRequest request) {
+
+    String message =
+            cognitoService.forgotPassword(request);
+
+    return new ApiResponse<>(
+            true,
+            message,
+            null
+    );
+
+}
+
+@PostMapping("/reset-password")
+public ApiResponse<String> resetPassword(
+        @RequestBody ResetPasswordRequest request) {
+
+    String message =
+            cognitoService.resetPassword(request);
+
+    return new ApiResponse<>(
+            true,
+            message,
+            null
+    );
+
+}
 }

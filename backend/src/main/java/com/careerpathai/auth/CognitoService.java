@@ -5,10 +5,12 @@ import org.springframework.stereotype.Service;
 import software.amazon.awssdk.services.cognitoidentityprovider.CognitoIdentityProviderClient;
 import software.amazon.awssdk.services.cognitoidentityprovider.model.*;
 
+
 @Service
 public class CognitoService {
 
     private final CognitoIdentityProviderClient cognitoClient;
+    
 
     @Value("${aws.cognito.clientId}")
     private String clientId;
@@ -19,11 +21,17 @@ public class CognitoService {
 
     public String register(RegisterRequest request) {
 
-        SignUpRequest signUpRequest = SignUpRequest.builder()
-                .clientId(clientId)
-                .username(request.getEmail())
-                .password(request.getPassword())
-                .build();
+       SignUpRequest signUpRequest = SignUpRequest.builder()
+        .clientId(clientId)
+        .username(request.getEmail())
+        .password(request.getPassword())
+        .userAttributes(
+                AttributeType.builder()
+                        .name("email")
+                        .value(request.getEmail())
+                        .build()
+        )
+        .build();
 
         cognitoClient.signUp(signUpRequest);
 
@@ -70,4 +78,32 @@ public class CognitoService {
 
         return "User Confirmed Successfully";
     }
+public String forgotPassword(ForgotPasswordRequest request) {
+
+    software.amazon.awssdk.services.cognitoidentityprovider.model.ForgotPasswordRequest forgotRequest =
+            software.amazon.awssdk.services.cognitoidentityprovider.model.ForgotPasswordRequest.builder()
+                    .clientId(clientId)
+                    .username(request.getEmail())
+                    .build();
+
+    cognitoClient.forgotPassword(forgotRequest);
+
+    return "Verification code sent successfully.";
+}
+
+public String resetPassword(ResetPasswordRequest request) {
+
+    ConfirmForgotPasswordRequest confirmRequest =
+            ConfirmForgotPasswordRequest.builder()
+                    .clientId(clientId)
+                    .username(request.getEmail())
+                    .confirmationCode(request.getCode())
+                    .password(request.getNewPassword())
+                    .build();
+
+    cognitoClient.confirmForgotPassword(confirmRequest);
+
+    return "Password reset successful.";
+
+}
 }

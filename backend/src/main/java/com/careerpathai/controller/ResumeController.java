@@ -49,46 +49,6 @@ public class ResumeController {
             metadata.getResumeId()
         );
     }
-    @GetMapping("/all")
-    public List<ResumeMetadata> getAllResumes() 
-    {
-
-    return dynamoDbService.getAllResumes();
-
-    }
-    @GetMapping("/{resumeId}")
-    public ResumeMetadata getResumeById(
-        @PathVariable String resumeId) {
-
-        return dynamoDbService.getResumeById(resumeId);
-
-    }  
-    @DeleteMapping("/{resumeId}")
-    public ApiResponse<String> deleteResume(
-        @PathVariable String resumeId) {
-
-        ResumeMetadata resume =
-                dynamoDbService.getResumeById(resumeId);
-
-        if (resume == null) {
-
-            return new ApiResponse<>(
-                    false,
-                    "Resume Not Found",
-                    null
-        );
-    }
-
-    s3Service.deleteFile(resume.getS3Key());
-
-    dynamoDbService.deleteResume(resumeId);
-
-    return new ApiResponse<>(
-            true,
-            "Resume Deleted Successfully",
-            resumeId
-    );
-
-} 
+   
 
 }
