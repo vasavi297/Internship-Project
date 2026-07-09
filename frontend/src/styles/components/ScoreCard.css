@@ -1,0 +1,99 @@
+.score-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 24px;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+.score-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.score-header h3 {
+    color: #0f172a;
+    font-size: 20px;
+}
+
+.score-header span {
+    background: #dbeafe;
+    color: #2563eb;
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.score-circle {
+    position: relative;
+    width: 170px;
+    height: 170px;
+    margin: 0 auto 30px;
+}
+
+.score-circle svg {
+    width: 170px;
+    height: 170px;
+    transform: rotate(-90deg);
+}
+
+.score-bg {
+    fill: none;
+    stroke: #e2e8f0;
+    stroke-width: 10;
+}
+
+.score-progress {
+    fill: none;
+    stroke: #2563eb;
+    stroke-width: 10;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.8s ease;
+}
+
+.score-value {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 38px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.missing-section h4 {
+    margin-bottom: 12px;
+    color: #0f172a;
+}
+
+.missing-section ul {
+    padding-left: 18px;
+    color: #64748b;
+}
+
+.missing-section li {
+    margin-bottom: 8px;
+}
+.score-card {
+    height: 100%;
+}
+.candidate-card,
+.score-card,
+.career-card,
+.skills-card,
+.roadmap-card {
+    transition: all 0.25s ease;
+}
+
+.candidate-card:hover,
+.score-card:hover,
+.career-card:hover,
+.skills-card:hover,
+.roadmap-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+}

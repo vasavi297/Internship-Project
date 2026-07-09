@@ -17,7 +17,7 @@ public class ResumeMetadata {
 
     private LocalDateTime uploadTime;
 
-    // Analysis Details
+    private LocalDateTime analyzedTime;
 
     private String candidateName;
 
@@ -26,8 +26,13 @@ public class ResumeMetadata {
     private String recommendedCareer;
 
     private Integer resumeScore;
-    private LocalDateTime analyzedTime;
+
     private String analysisSummary;
+
+    private String userId;
+    private Double careerMatch;
+
+    private Integer missingSkillCount;
 
     public ResumeMetadata() {
 
@@ -60,6 +65,7 @@ public class ResumeMetadata {
         this.s3Key = s3Key;
     }
 
+
     public Long getFileSize() {
         return fileSize;
     }
@@ -82,6 +88,14 @@ public class ResumeMetadata {
 
     public void setUploadTime(LocalDateTime uploadTime) {
         this.uploadTime = uploadTime;
+    }
+
+    public LocalDateTime getAnalyzedTime() {
+        return analyzedTime;
+    }
+
+    public void setAnalyzedTime(LocalDateTime analyzedTime) {
+        this.analyzedTime = analyzedTime;
     }
 
     public String getCandidateName() {
@@ -115,4 +129,35 @@ public class ResumeMetadata {
     public void setResumeScore(Integer resumeScore) {
         this.resumeScore = resumeScore;
     }
+
+    public String getAnalysisSummary() {
+        return analysisSummary;
+    }
+
+    public void setAnalysisSummary(String analysisSummary) {
+        this.analysisSummary = analysisSummary;
+    }
+    public String getUserId() {
+    return userId;
+    }
+
+    public void setUserId(String userId) {
+    this.userId = userId;
+    }
+   public Double getCareerMatch() {
+    return careerMatch;
+}
+
+public void setCareerMatch(Double careerMatch) {
+    this.careerMatch = careerMatch;
+}
+
+    public Integer getMissingSkillCount() {
+    return missingSkillCount;
+    }
+
+    public void setMissingSkillCount(Integer missingSkillCount) {
+    this.missingSkillCount = missingSkillCount;
+    }
+
 }

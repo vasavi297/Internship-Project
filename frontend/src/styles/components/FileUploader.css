@@ -1,0 +1,54 @@
+.upload-box {
+    background: white;
+    border: 2px dashed #cbd5e1;
+    border-radius: 20px;
+    padding: 50px;
+    text-align: center;
+    transition: .3s;
+}
+
+.upload-box:hover {
+    border-color: #2563eb;
+}
+
+.upload-box.dragging {
+    border-color: #2563eb;
+    background: #eff6ff;
+}
+
+.upload-cloud {
+    font-size: 60px;
+    color: #2563eb;
+    margin-bottom: 20px;
+}
+
+.upload-box h2 {
+    color: #0f172a;
+    margin-bottom: 10px;
+}
+
+.upload-box p {
+    color: #64748b;
+    margin-bottom: 25px;
+}
+
+.browse-btn {
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 28px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.browse-btn:hover {
+    background: #1d4ed8;
+}
+
+.selected-file {
+    margin-top: 20px;
+    color: #2563eb;
+    font-weight: 600;
+}
