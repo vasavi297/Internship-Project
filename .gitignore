@@ -1,5 +1,5 @@
+node_modules/
 backend/target/
 target/
 *.jar
 .vscode/
-node_modules/
