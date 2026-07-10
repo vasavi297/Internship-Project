@@ -6,6 +6,7 @@ import UploadCard from "../components/resume/UploadCard";
 
 import AuthService from "../services/AuthService";
 import DashboardService from "../services/DashboardService";
+import LoadingSpinner from "../components/common/LoadingSpinner";
 
 import "../styles/pages/Dashboard.css";
 
@@ -46,7 +47,13 @@ function Dashboard() {
 
     if (!dashboard) {
 
-        return <h2>Loading Dashboard...</h2>;
+        return (
+
+            <LoadingSpinner
+                text="Loading Dashboard..."
+            />
+
+        );
 
     }
 
