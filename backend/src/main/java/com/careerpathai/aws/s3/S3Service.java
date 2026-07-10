@@ -1,4 +1,4 @@
-package com.careerpathai.aws;
+package com.careerpathai.aws.s3;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,6 @@
 package com.careerpathai.controller;
 
-import com.careerpathai.aws.S3Service;
+import com.careerpathai.aws.s3.S3Service;
 import com.careerpathai.response.ApiResponse;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
