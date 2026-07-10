@@ -308,7 +308,7 @@ docker compose up -d --build
 
 **Application**
 
-http://13.127.168.164:3000
+[![Live Demo](https://img.shields.io/badge/Live-Demo-success?style=for-the-badge&logo=google-chrome)](http://13.127.168.164:3000)
 
 ---
 
