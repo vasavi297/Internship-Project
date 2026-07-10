@@ -5,6 +5,8 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useAuth } from "../../context/AuthContext";
 import AuthService from "../../services/AuthService";
 
+import toast from "react-hot-toast";
+
 import "../../styles/pages/Auth.css";
 
 function Login() {
@@ -42,19 +44,27 @@ function Login() {
 
             login(response.data.data);
 
-            navigate("/");
+            toast.success("Login Successful!");
+
+            navigate("/dashboard", { replace: true });
 
         } catch (exception) {
 
             console.error(exception);
 
-            setError(
+                let message =
+                    exception.response?.data?.message ||
+                    "Invalid Email or Password.";
 
-                exception.response?.data?.message ||
+            if (message.includes("Incorrect username or password")) {
 
-                "Invalid Email or Password."
+                message = "Incorrect email or password.";
 
-            );
+            }
+
+            setError(message);
+
+            toast.error(message);
 
         } finally {
 

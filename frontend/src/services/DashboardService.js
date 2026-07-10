@@ -1,35 +1,15 @@
-import axios from "axios";
-
-const API_URL = "http://localhost:8080/dashboard";
+import api from "./api";
 
 class DashboardService {
 
-    getHeaders() {
-
-        return {
-
-            Authorization: `Bearer ${localStorage.getItem("accessToken")}`
-
-        };
-
-    }
-
     getDashboard() {
 
-        return axios.get(
-
-            API_URL,
-
-            {
-
-                headers: this.getHeaders()
-
-            }
-
-        );
+        return api.get("/dashboard");
 
     }
 
 }
 
-export default new DashboardService();
+const dashboardService = new DashboardService();
+
+export default dashboardService;

@@ -1,18 +1,26 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {
+    BrowserRouter,
+    Routes,
+    Route,
+    Navigate
+} from "react-router-dom";
 
 import MainLayout from "../layouts/MainLayout";
 
 import Dashboard from "../pages/Dashboard";
 import UploadResume from "../pages/UploadResume";
 import ResumeHistory from "../pages/ResumeHistory";
-import Profile from "../pages/Profile";
 import ResumeAnalysis from "../pages/ResumeAnalysis";
+import Profile from "../pages/Profile";
 
+import Login from "../pages/auth/Login";
 import Register from "../pages/auth/Register";
 import ConfirmAccount from "../pages/auth/ConfirmAccount";
-import Login from "../pages/auth/Login";
 import ForgotPassword from "../pages/auth/ForgotPassword";
 import ResetPassword from "../pages/auth/ResetPassword";
+
+import ProtectedRoute from "./ProtectedRoute";
+import PublicRoute from "./PublicRoute";
 
 function AppRoutes() {
 
@@ -22,36 +30,72 @@ function AppRoutes() {
 
             <Routes>
 
+                {/* Root */}
+
+                <Route
+                    path="/"
+                    element={<Navigate to="/login" replace />}
+                />
+
                 {/* Authentication Pages */}
 
                 <Route
-                    path="/register"
-                    element={<Register />}
+                    path="/login"
+                    element={
+                        <PublicRoute>
+                            <Login />
+                        </PublicRoute>
+                    }
                 />
+
+                <Route
+                    path="/register"
+                    element={
+                        <PublicRoute>
+                            <Register />
+                        </PublicRoute>
+                    }
+                />
+
                 <Route
                     path="/confirm"
-                    element={<ConfirmAccount />}
+                    element={
+                        <PublicRoute>
+                            <ConfirmAccount />
+                        </PublicRoute>
+                    }
                 />
+
                 <Route
-                    path="/login"
-                    element={<Login />}
+                    path="/forgot-password"
+                    element={
+                        <PublicRoute>
+                            <ForgotPassword />
+                        </PublicRoute>
+                    }
                 />
+
                 <Route
-    path="/forgot-password"
-    element={<ForgotPassword />}
-/>
+                    path="/reset-password"
+                    element={
+                        <PublicRoute>
+                            <ResetPassword />
+                        </PublicRoute>
+                    }
+                />
 
-<Route
-    path="/reset-password"
-    element={<ResetPassword />}
-/>
+                {/* Protected Pages */}
 
-                {/* Dashboard Layout */}
-
-                <Route element={<MainLayout />}>
+                <Route
+                    element={
+                        <ProtectedRoute>
+                            <MainLayout />
+                        </ProtectedRoute>
+                    }
+                >
 
                     <Route
-                        path="/"
+                        path="/dashboard"
                         element={<Dashboard />}
                     />
 
@@ -81,6 +125,13 @@ function AppRoutes() {
                     />
 
                 </Route>
+
+                {/* Invalid URL */}
+
+                <Route
+                    path="*"
+                    element={<Navigate to="/login" replace />}
+                />
 
             </Routes>
 

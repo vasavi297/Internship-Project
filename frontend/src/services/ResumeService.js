@@ -1,21 +1,6 @@
-import axios from "axios";
-
-const API_BASE_URL = "http://localhost:8080/resume";
+import api from "./api";
 
 class ResumeService {
-
-    getHeaders() {
-
-        const accessToken =
-            localStorage.getItem("accessToken");
-
-        return {
-
-            Authorization: `Bearer ${accessToken}`
-
-        };
-
-    }
 
     analyzeResume(file, onUploadProgress) {
 
@@ -23,9 +8,9 @@ class ResumeService {
 
         formData.append("file", file);
 
-        return axios.post(
+        return api.post(
 
-            `${API_BASE_URL}/analyze`,
+            "/resume/analyze",
 
             formData,
 
@@ -33,10 +18,7 @@ class ResumeService {
 
                 headers: {
 
-                    ...this.getHeaders(),
-
-                    "Content-Type":
-                        "multipart/form-data"
+                    "Content-Type": "multipart/form-data"
 
                 },
 
@@ -50,8 +32,7 @@ class ResumeService {
 
                     const progress = Math.round(
 
-                        (event.loaded * 100) /
-                        event.total
+                        (event.loaded * 100) / event.total
 
                     );
 
@@ -67,52 +48,24 @@ class ResumeService {
 
     getAllResumes() {
 
-        return axios.get(
-
-            `${API_BASE_URL}/all`,
-
-            {
-
-                headers: this.getHeaders()
-
-            }
-
-        );
+        return api.get("/resume/all");
 
     }
 
     getResume(resumeId) {
 
-        return axios.get(
-
-            `${API_BASE_URL}/${resumeId}`,
-
-            {
-
-                headers: this.getHeaders()
-
-            }
-
-        );
+        return api.get(`/resume/${resumeId}`);
 
     }
 
     deleteResume(resumeId) {
 
-        return axios.delete(
-
-            `${API_BASE_URL}/${resumeId}`,
-
-            {
-
-                headers: this.getHeaders()
-
-            }
-
-        );
+        return api.delete(`/resume/${resumeId}`);
 
     }
 
 }
 
-export default new ResumeService();
+const resumeService = new ResumeService();
+
+export default resumeService;
