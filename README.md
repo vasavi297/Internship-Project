@@ -1,106 +1,66 @@
 # CareerPathAI
 
-## AI-Powered Career Recommendation System
+<div align="center">
 
-CareerPathAI is an intelligent web application designed to help users identify suitable career paths based on their resumes. The system analyzes resumes, extracts technical skills using Artificial Intelligence, identifies skill gaps, and generates personalized learning roadmaps to help users achieve their career goals.
+### AI-Powered Career Recommendation & Resume Analysis Platform
 
-The application combines modern web technologies with cloud computing and AI services to provide a scalable and efficient career guidance platform.
+Analyze resumes, identify skill gaps, recommend career paths, and generate personalized learning roadmaps using Artificial Intelligence and AWS Cloud.
 
----
+![Java](https://img.shields.io/badge/Java-21-orange)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.4-green)
+![React](https://img.shields.io/badge/React-18-blue)
+![AWS](https://img.shields.io/badge/AWS-Cloud-orange)
+![Docker](https://img.shields.io/badge/Docker-Containerized-blue)
+![License](https://img.shields.io/badge/License-Educational-lightgrey)
 
-# Project Objectives
-
-- Analyze uploaded resumes.
-- Extract technical skills automatically.
-- Identify missing skills for target careers.
-- Recommend suitable career paths.
-- Generate personalized learning roadmaps.
-- Securely store and manage user resumes using AWS Cloud.
+</div>
 
 ---
 
-# System Architecture
+# Overview
 
-```text
-                    User
-                      │
-                      ▼
-               React Frontend
-                      │
-                      ▼
-              Spring Boot Backend
-                      │
-      ┌───────────────┼────────────────┐
-      ▼               ▼                ▼
- Amazon S3      Amazon DynamoDB   Amazon Cognito
-      │
-      ▼
- Resume Storage
-      │
-      ▼
- Python FastAPI (AI Engine)
-      │
-      ▼
- Resume Parsing
-      │
-      ▼
- Skill Extraction
-      │
-      ▼
- Skill Gap Analysis
-      │
-      ▼
- Career Recommendation
-      │
-      ▼
- Learning Roadmap
-```
+CareerPathAI is an AI-powered web application that helps users discover suitable career paths based on their resumes.
+
+The system analyzes uploaded resumes, extracts skills, identifies missing competencies, recommends career opportunities, and provides personalized learning roadmaps to bridge skill gaps.
+
+The application follows a modern cloud-native architecture using Spring Boot, React, Docker, and Amazon Web Services (AWS).
 
 ---
 
-# Technology Stack
+# Key Features
 
-## Backend
+## Authentication
 
-- Java 21
-- Spring Boot
-- Spring Security
+- User Registration
+- Email Verification
+- User Login
+- Forgot Password
+- Reset Password
+- AWS Cognito Authentication
 - JWT Authentication
-- Maven
-- Swagger OpenAPI
-
-## Frontend
-
-- React
-- HTML
-- CSS
-- JavaScript
-
-## AI Services
-
-- Python FastAPI
-- Stanford CoreNLP
-- Apache OpenNLP
-- Apache PDFBox
-
-## AWS Cloud Services
-
-- Amazon S3
-- Amazon DynamoDB
-- Amazon Cognito
-- Amazon API Gateway
-- Amazon EC2
 
 ---
-
-# Features
 
 ## Resume Management
 
 - Upload Resume (PDF/DOCX)
-- View Uploaded Resumes
-- Search Resume
+- Resume Preview
+- Resume History
+- Resume Details
 - Delete Resume
+
+---
+
+## Dashboard
+
+- Candidate Information
+- Resume Score
+- Career Match Percentage
+- Missing Skills Count
+- Recommended Career
+- Resume Statistics
+
+---
 
 ## AI Resume Analysis
 
@@ -108,47 +68,112 @@ The application combines modern web technologies with cloud computing and AI ser
 - Skill Extraction
 - Education Detection
 - Experience Detection
-
-## Career Recommendation
-
-- AI-Based Career Prediction
-- Industry Skill Matching
-- Career Compatibility Analysis
-
-## Skill Gap Analysis
-
-- Compare Resume Skills with Industry Requirements
-- Identify Missing Skills
-- Suggest Skill Improvements
-
-## Learning Roadmap
-
-Generate personalized learning plans including:
-
-- Courses
-- Certifications
-- Practice Projects
-- Learning Timeline
-
-## Authentication
-
-- User Registration
-- User Login
-- JWT Authentication
-- Secure APIs
-- AWS Cognito Integration
+- Career Matching
+- Resume Scoring
 
 ---
 
-# AWS Services Used
+## Learning Roadmap
 
-| AWS Service | Purpose |
-|-------------|---------|
-| Amazon S3 | Store uploaded resumes |
-| Amazon DynamoDB | Store resume metadata |
-| Amazon Cognito | User authentication |
-| Amazon API Gateway | API management |
-| Amazon EC2 | Application deployment |
+- Personalized Learning Plan
+- Recommended Skills
+- Certifications
+- Practice Projects
+- Estimated Learning Duration
+
+---
+
+## Cloud Integration
+
+- Amazon S3 for Resume Storage
+- Amazon DynamoDB for Resume Metadata
+- Amazon Cognito for Authentication
+- Amazon EC2 Deployment
+
+---
+
+# System Architecture
+
+```text
+                        User
+                          │
+                          ▼
+                 React Frontend
+                          │
+                          ▼
+                Spring Boot Backend
+                          │
+        ┌─────────────────┼──────────────────┐
+        ▼                 ▼                  ▼
+   Amazon S3        Amazon DynamoDB    Amazon Cognito
+        │
+        ▼
+ Resume Storage & Metadata
+        │
+        ▼
+ AI Resume Processing
+        │
+        ▼
+ Skill Extraction
+        │
+        ▼
+ Career Recommendation
+        │
+        ▼
+ Personalized Learning Roadmap
+```
+
+---
+
+# Tech Stack
+
+## Frontend
+
+- React.js
+- JavaScript
+- HTML5
+- CSS3
+- Axios
+- React Router
+
+---
+
+## Backend
+
+- Java 21
+- Spring Boot 3
+- Spring Security
+- JWT
+- REST APIs
+- Maven
+- Swagger OpenAPI
+
+---
+
+## AI & Resume Processing
+
+- Apache PDFBox
+- Apache POI
+- Stanford CoreNLP
+- Apache OpenNLP
+
+---
+
+## Cloud Services
+
+- Amazon EC2
+- Amazon S3
+- Amazon DynamoDB
+- Amazon Cognito
+
+---
+
+## DevOps
+
+- Docker
+- Docker Compose
+- Git
+- GitHub
 
 ---
 
@@ -162,69 +187,152 @@ CareerPathAI
 │   ├── service
 │   ├── repository
 │   ├── config
-│   ├── model
 │   ├── dto
+│   ├── model
 │   ├── response
-│   ├── exception
 │   ├── util
+│   ├── auth
 │   └── aws
 │       ├── s3
 │       ├── dynamodb
 │       └── cognito
 │
 ├── frontend
+│   ├── components
+│   ├── pages
+│   ├── services
+│   ├── assets
+│   └── utils
 │
-├── ai-services
+├── docker-compose.yml
 │
 └── README.md
 ```
 
 ---
 
-# Current Progress
+# AWS Services Used
 
-## Completed
+| Service | Purpose |
+|----------|----------|
+| Amazon EC2 | Application Hosting |
+| Amazon S3 | Resume Storage |
+| Amazon DynamoDB | Resume Metadata Storage |
+| Amazon Cognito | User Authentication |
 
-- Spring Boot Backend Setup
-- REST API Development
-- Swagger API Documentation
-- Global Exception Handling
-- Standard API Response
-- Resume Upload API
-- Amazon S3 Integration
-- Amazon DynamoDB Integration
-- Resume CRUD Operations
+---
 
-## In Progress
+# Docker Deployment
 
-- Amazon Cognito Authentication
-- Resume Parsing
-- Skill Extraction
+The entire application is containerized using Docker.
 
-## Planned
+### Backend
 
-- Career Recommendation Engine
-- Skill Gap Analysis
-- Learning Roadmap Generation
-- React Dashboard
-- EC2 Deployment
-- API Gateway Integration
+- Spring Boot Container
+
+### Frontend
+
+- React Application
+- Nginx Web Server
+
+### Docker Compose
+
+Docker Compose is used to orchestrate the complete application stack.
+
+Run the application using:
+
+```bash
+docker compose up -d --build
+```
+
+---
+
+# API Documentation
+
+Swagger UI
+
+```
+http://localhost:8080/swagger-ui/index.html
+```
+
+or
+
+```
+http://<EC2-PUBLIC-IP>:8080/swagger-ui/index.html
+```
+
+---
+
+# Installation
+
+## Clone Repository
+
+```bash
+git clone https://github.com/vasavi297/Internship-Project.git
+```
+
+---
+
+## Backend
+
+```bash
+cd backend
+
+mvn clean install
+
+mvn spring-boot:run
+```
+
+---
+
+## Frontend
+
+```bash
+cd frontend
+
+npm install
+
+npm start
+```
+
+---
+
+## Docker
+
+```bash
+docker compose up -d --build
+```
 
 ---
 
 # Future Enhancements
 
-- Resume Score Prediction
-- Interview Question Generator
-- AI Chatbot
-- ATS Score Calculator
-- Job Recommendation System
-- LinkedIn Profile Analysis
+- ATS Resume Score
+- AI Interview Question Generator
+- Job Recommendation Engine
+- Resume Ranking
 - Email Notifications
+- Learning Progress Tracking
+- AI Career Chatbot
 - Multi-language Resume Analysis
 
 ---
 
+# Learning Outcomes
+
+During the development of this project, the following technologies were explored:
+
+- Spring Boot REST APIs
+- React Frontend Development
+- AWS Cloud Services
+- Docker Containerization
+- Docker Compose
+- JWT Authentication
+- Amazon Cognito
+- Amazon S3 Integration
+- Amazon DynamoDB Integration
+- Cloud Deployment using Amazon EC2
+
 # License
 
-This project is developed for educational and internship purposes.
+This project was developed for educational and internship purposes.
