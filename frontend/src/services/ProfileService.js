@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://13.205.249.127/profile";
+const API_URL = "http://13.205.249.127:8080/profile";
 
 class ProfileService {
 
