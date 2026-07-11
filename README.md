@@ -310,6 +310,8 @@ docker compose up -d --build
 
 [![Live Demo](https://img.shields.io/badge/Live-Demo-success?style=for-the-badge&logo=google-chrome)](http://13.205.249.127:3000)
 
+**Note:** The deployment link is currently inactive because the cloud instance has been stopped to avoid unnecessary resource usage and costs.
+
 ---
 
 # Future Enhancements
